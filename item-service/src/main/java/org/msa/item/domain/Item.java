@@ -1,7 +1,5 @@
 package org.msa.item.domain;
 
-import org.checkerframework.checker.units.qual.C;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -26,6 +24,9 @@ public class Item {
 
     @Column(name = "DESCRIPTION", length = 30)
     private String description;
+
+    @Column(name = "ITEM_TYPE", length = 1)
+    private String itemType;
 
     @Column(name = "CNT", length = 10)
     private long count;
