@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,7 +22,7 @@ public class ItemController {
     private final ItemService itemService;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<ResponseDTO> add(@RequestBody ItemDTO itemDTO){
+    public ResponseEntity<ResponseDTO> add(@Valid @RequestBody ItemDTO itemDTO){
         ResponseDTO.ResponseDTOBuilder responseDTOBuilder = ResponseDTO.builder();
 
         itemService.insertItem(itemDTO);
