@@ -3,6 +3,7 @@ package org.msa.item.controller;
 import org.msa.item.dto.ItemDTO;
 import org.msa.item.dto.ResponseDTO;
 import org.msa.item.dto.constant.ItemType;
+import org.msa.item.exception.ApiException;
 import org.msa.item.service.ItemService;
 import org.msa.item.valid.ItemTypeValid;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +28,14 @@ public class ItemController {
     private final ItemService itemService;
 
     @RequestMapping(value = "/add/{itemType}", method = RequestMethod.POST)
-    public ResponseEntity<ResponseDTO> add(@Valid @RequestBody ItemDTO itemDTO, @ItemTypeValid @PathVariable String itemType){
+    public ResponseEntity<ResponseDTO> add(@Valid @RequestBody ItemDTO itemDTO, @ItemTypeValid @PathVariable String itemType)
+        throws Exception {
         ResponseDTO.ResponseDTOBuilder responseDTOBuilder = ResponseDTO.builder();
 
-        log.debug("path.variable itemType = {}", itemType);
+        /*log.debug("path.variable itemType = {}", itemType);
         boolean hasItemType = false;
 
-        /*ItemType[] itemTypeList = ItemType.values();
+        ItemType[] itemTypeList = ItemType.values();
 
         for (ItemType i: itemTypeList) {
             hasItemType = i.hasItemCd(itemType);
@@ -46,6 +48,12 @@ public class ItemController {
         } else {
             itemDTO.setItemType(itemType);
         }*/
+
+        try {
+            Integer.parseInt("test");
+        } catch (Exception e) {
+            throw new ApiException("test 에러");
+        }
 
         itemDTO.setItemType(itemType);
 
