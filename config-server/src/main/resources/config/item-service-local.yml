@@ -10,7 +10,6 @@ spring:
     url: jdbc:mariadb://localhost:3306/msa
     username: root
     password: '{cipher}b3718fadcfa8e1de0155ee31f74d1ad2f4d87ced6019870803424a978f9462c2'
-
   jpa:
     hibernate:
       ddl-auto: create
