@@ -6,6 +6,9 @@ logging:
     org.msa.gatewayserver: debug
 
 spring:
+  config:
+    import:
+      - file:///Development/99.workspace_study/msa/Microservice/config-server/src/main/resources/config/datasource-local.yml
   cloud:
     gateway:
       routes:
