@@ -16,11 +16,12 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public void insertItem(ItemDTO itemDTO){
+    public void insertItem(ItemDTO itemDTO, String accountId){
         String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 
         Item item = Item.builder()
             .id(itemDTO.getId())
+            .accountId(accountId)
             .name(itemDTO.getName())
             .description(itemDTO.getDescription())
             .itemType(itemDTO.getItemType())

@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +40,12 @@ public class ItemController {
         @ApiResponse(responseCode = "501", description = "API EXCEPTION")
     })
     @RequestMapping(value = "/add/{itemType}", method = RequestMethod.POST)
-    public ResponseEntity<ResponseDTO> add(@Valid @RequestBody ItemDTO itemDTO, @ItemTypeValid @PathVariable String itemType)
+    public ResponseEntity<ResponseDTO> add(HttpServletRequest request, @Valid @RequestBody ItemDTO itemDTO, @ItemTypeValid @PathVariable String itemType)
         throws Exception {
         ResponseDTO.ResponseDTOBuilder responseDTOBuilder = ResponseDTO.builder();
+
+        String accountId = request.getHeader("accountId").toString().replace("[", "").replace("]", "");
+        log.info("accountId = {}", accountId);
 
         /*log.debug("path.variable itemType = {}", itemType);
         boolean hasItemType = false;
@@ -68,7 +72,7 @@ public class ItemController {
 
         itemDTO.setItemType(itemType);
 
-        itemService.insertItem(itemDTO);
+        itemService.insertItem(itemDTO, accountId);
         log.debug("request add item id = {}", itemDTO.getId());
 
         responseDTOBuilder.code("200").message("success");
