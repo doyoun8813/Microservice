@@ -41,8 +41,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.1.4'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'jakarta.json:jakarta.json-api:2.1.2'
 
     compileOnly 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
