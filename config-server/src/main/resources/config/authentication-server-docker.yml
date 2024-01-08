@@ -1,0 +1,20 @@
+logging:
+  file:
+    name: logs/authentication.log
+  level:
+    root: info
+    org.msa.authentication: debug
+
+spring:
+  config:
+    import:
+      - classpath:/config/datasource-docker.yml
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka

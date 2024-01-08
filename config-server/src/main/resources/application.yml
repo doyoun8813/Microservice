@@ -7,7 +7,7 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///Development/99.workspace_study/msa/Microservice/config-server/src/main/resources/config
+          search-locations: classpath:/config
         encrypt:
           enabled: false
 server:
